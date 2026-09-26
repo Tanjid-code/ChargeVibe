@@ -49,6 +49,4 @@ Requires `minSdk 26`, `targetSdk 34`.
 
 `SYSTEM_ALERT_WINDOW` needs a permissions declaration form; `FOREGROUND_SERVICE_SPECIAL_USE` needs a justification `<property>` in the manifest. Both required for review approval.
 
-## License
 
-*(Add your chosen license here.)*
