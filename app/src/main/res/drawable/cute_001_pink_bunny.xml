@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.apple.com/aapt"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:drawable="@drawable/v_cute_bunny_base"
+    tools:ignore="MissingPrefix">
+
+    <!-- This maps the target animation directly to the ears group -->
+    <target android:name="ears">
+        <aapt:attr name="android:animation">
+            <objectAnimator
+                android:propertyName="translationY"
+                android:valueFrom="0"
+                android:valueTo="-3"
+                android:duration="400"
+                android:repeatCount="infinite"
+                android:repeatMode="reverse"
+                android:valueType="floatType"/>
+        </aapt:attr>
+    </target>
+</animated-vector>

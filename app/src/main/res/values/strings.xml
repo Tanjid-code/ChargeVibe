@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">ChargeVibe</string>
+    <string name="notification_channel_name">ChargeVibe Service</string>
+    <string name="notification_channel_desc">Keeps ChargeVibe running to show charging overlay</string>
+    <string name="notification_title">ChargeVibe Active</string>
+    <string name="notification_text">Monitoring charging status…</string>
+    <string name="permission_overlay_title">Accessibility Service</string>
+    <string name="permission_overlay_desc">Required to completely cover and replace the system battery icon</string>
+    <string name="permission_battery_title">Battery Optimization</string>
+    <string name="permission_battery_desc">Disable battery optimization so ChargeVibe runs reliably</string>
+    <string name="permission_notification_title">Notification Permission</string>
+    <string name="permission_notification_desc">Required for background status updates</string>
+    <string name="grant_permission">Grant</string>
+    <string name="granted">Granted ✓</string>
+    <string name="start_service">Activate ChargeVibe</string>
+    <string name="stop_service">Deactivate</string>
+    <string name="choose_design">Choose Your Charging Design</string>
+    <string name="customize">Customize</string>
+    <string name="upload_image">Upload Custom Image</string>
+    <string name="preview">Preview</string>
+    <string name="size">Size</string>
+    <string name="transparency">Transparency</string>
+    <string name="animation_speed">Animation Speed</string>
+    <string name="position_x">Position X</string>
+    <string name="position_y">Position Y</string>
+    <string name="save_settings">Save</string>
+    <string name="reset_defaults">Reset</string>
+    <string name="accessibility_description">ChargeVibe uses this service to display your custom selected icon directly on top of the system status bar battery icon when charging.</string>
+</resources>

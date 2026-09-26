@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+
+    <!-- Face Base -->
+    <path
+        android:fillColor="#FFD1DC"
+        android:pathData="M12,11 C7,11 5,14 5,18 C5,21 8,22 12,22 C16,22 19,21 19,18 C19,14 17,11 12,11 Z"/>
+
+    <!-- Animatable Ears Group -->
+    <group android:name="ears" android:pivotX="12" android:pivotY="11">
+        <path
+            android:fillColor="#FFB6C1"
+            android:pathData="M8,11 C6,3 9,2 10,9 C11,2 14,3 12,11 Z"/>
+    </group>
+</vector>

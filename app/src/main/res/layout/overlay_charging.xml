@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overlayRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FF000000">
+
+    <ImageView
+        android:id="@+id/overlayIcon"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:padding="2dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_bolt" />
+
+    <TextView
+        android:id="@+id/overlayEmoji"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/overlayCustomImage"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:padding="2dp"
+        android:scaleType="fitCenter"
+        android:visibility="gone" />
+
+    <View
+        android:id="@+id/dragBorder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#66FF6C63"
+        android:visibility="gone" />
+
+</FrameLayout>

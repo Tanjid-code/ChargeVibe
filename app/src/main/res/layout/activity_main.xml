@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_dark"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="12dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚡"
+                android:textSize="40sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="ChargeVibe"
+                android:textColor="@color/text_primary"
+                android:textSize="26sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Custom Battery Status &amp; Overlay"
+                android:textColor="@color/text_secondary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- IMPORTANT NOTICE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_permission_card"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="⚠️ Can't hide system battery icon?"
+                android:textColor="@color/accent"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Android forbids apps from replacing the status bar. Tap below for the OEM setting."
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShowLimitationGuide"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:text="📖 How to Hide System Battery Icon"
+                android:textSize="12sp"
+                app:backgroundTint="@color/background_surface"
+                app:cornerRadius="20dp"
+                app:strokeColor="@color/accent"
+                app:strokeWidth="1dp" />
+        </LinearLayout>
+
+        <!-- Status Card -->
+        <LinearLayout
+            android:id="@+id/statusCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_card"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <View
+                android:id="@+id/statusDot"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:background="@drawable/bg_button_primary" />
+
+            <TextView
+                android:id="@+id/statusText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:text="Service Inactive"
+                android:textColor="@color/text_primary"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/batteryText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="🔋 --%"
+                android:textColor="@color/text_secondary"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <!-- Main Activate / Deactivate -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnActivate"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:text="⚡  Activate ChargeVibe"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="28dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDeactivate"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:text="Stop Overlay"
+            android:textColor="@color/primary"
+            android:textSize="14sp"
+            android:visibility="gone"
+            app:backgroundTint="@color/background_card"
+            app:cornerRadius="24dp"
+            app:strokeColor="@color/primary"
+            app:strokeWidth="1dp" />
+
+        <!-- Permissions Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="1. Permissions"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Overlay Permission -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_permission_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Display Over Other Apps"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Required to draw icon over battery"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOverlayPerm"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Grant"
+                android:textSize="12sp"
+                app:cornerRadius="19dp" />
+        </LinearLayout>
+
+        <!-- Notification Permission -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_permission_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Notifications"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Keeps service persistent"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnNotifPerm"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Grant"
+                android:textSize="12sp"
+                app:cornerRadius="19dp" />
+        </LinearLayout>
+
+        <!-- Battery Optimization Permission -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_permission_card"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ignore Battery Optimization"
+                    android:textColor="@color/text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Prevents OEM from killing overlay"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnBatteryPerm"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:text="Grant"
+                android:textSize="12sp"
+                app:cornerRadius="19dp" />
+        </LinearLayout>
+
+        <!-- Alignment, Masking, and Placement Card -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="2. Position &amp; Device Preset"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Device Preset Spinner -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Device Preset (Starting offset guess):"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <Spinner
+                android:id="@+id/spinnerDevicePreset"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_permission_card"
+                android:padding="8dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="⚠️ Presets are scaffolding, not measured truth. Nudge for pixel-perfect."
+                android:textColor="@color/text_hint"
+                android:textSize="10sp" />
+
+            <!-- Snap Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSnapToBattery"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:text="🎯 Auto-Snap to Status Bar Battery"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/background_surface"
+                app:cornerRadius="24dp"
+                app:strokeColor="@color/accent"
+                app:strokeWidth="1.5dp" />
+
+            <!-- Drag on Screen Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnToggleDrag"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:text="👆 Touch &amp; Drag Overlay on Screen"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="24dp" />
+
+            <!-- Nudge D-Pad Controls -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Fine-Tune Nudge (Pixel-by-Pixel):"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNudgeUp"
+                    android:layout_width="70dp"
+                    android:layout_height="38dp"
+                    android:text="▲"
+                    android:textSize="14sp"
+                    app:backgroundTint="@color/background_surface"
+                    app:cornerRadius="10dp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnNudgeLeft"
+                        android:layout_width="70dp"
+                        android:layout_height="38dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="◀"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/background_surface"
+                        app:cornerRadius="10dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnNudgeRight"
+                        android:layout_width="70dp"
+                        android:layout_height="38dp"
+                        android:text="▶"
+                        android:textSize="14sp"
+                        app:backgroundTint="@color/background_surface"
+                        app:cornerRadius="10dp" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNudgeDown"
+                    android:layout_width="70dp"
+                    android:layout_height="38dp"
+                    android:text="▼"
+                    android:textSize="14sp"
+                    app:backgroundTint="@color/background_surface"
+                    app:cornerRadius="10dp" />
+            </LinearLayout>
+
+            <!-- Width Slider -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Mask Width (Stretch to cover battery + percentage):"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderWidth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="20"
+                android:valueTo="200"
+                android:value="60"
+                app:thumbColor="@color/primary"
+                app:trackColorActive="@color/primary" />
+
+            <!-- Height Slider -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mask Height (Matches status bar thickness):"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderHeight"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="10"
+                android:valueTo="100"
+                android:value="30"
+                app:thumbColor="@color/primary"
+                app:trackColorActive="@color/primary" />
+
+            <!-- Overall Transparency Slider -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Overall Transparency:"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderTransparency"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="0.1"
+                android:valueTo="1.0"
+                android:value="1.0"
+                android:stepSize="0.05"
+                app:thumbColor="@color/primary"
+                app:trackColorActive="@color/primary" />
+
+            <!-- Pulse Speed Slider -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Animation Pulse Speed (ms):"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/sliderAnimSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:valueFrom="300"
+                android:valueTo="4000"
+                android:value="1500"
+                android:stepSize="100"
+                app:thumbColor="@color/accent"
+                app:trackColorActive="@color/accent" />
+
+            <!-- Mask Background Color -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Background Mask Color (Hides system icon):"
+                android:textColor="@color/text_secondary"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnColorBlack"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:text="⬛ Solid Black"
+                    android:textSize="11sp"
+                    app:cornerRadius="19dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnColorDark"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="🟦 Dark Blue"
+                    android:textSize="11sp"
+                    app:backgroundTint="@color/background_surface"
+                    app:cornerRadius="19dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnColorTransparent"
+                    android:layout_width="0dp"
+                    android:layout_height="38dp"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="Clear"
+                    android:textSize="11sp"
+                    app:backgroundTint="@color/background_surface"
+                    app:cornerRadius="19dp" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchAlwaysShow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:checked="true"
+                android:text="Show Always (Replaces icon 24/7)"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchAnimation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:checked="true"
+                android:text="Enable Pulse Animation"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp" />
+
+            <!-- Lock Screen Toggle -->
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchLockScreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:checked="false"
+                android:text="Show On Lock Screen"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp" />
+
+            <!-- Battery-Health Color Reactive Toggle -->
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/switchBatteryColors"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:checked="false"
+                android:text="Tint Icon by Battery Health"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:layout_marginStart="4dp"
+                android:text="Green when healthy → Amber when low → Red when critical"
+                android:textColor="@color/text_hint"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- Design Section -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="8dp"
+            android:text="3. Choose Your Icon"
+            android:textColor="@color/text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/designRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp" />
+
+        <!-- Full-screen icon drawer trigger (NEW) -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBrowseAllIcons"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            android:text="🗂 Browse All Icons"
+            android:textColor="@color/text_primary"
+            android:textSize="13sp"
+            app:backgroundTint="@color/background_surface"
+            app:cornerRadius="24dp"
+            app:strokeColor="@color/accent"
+            app:strokeWidth="1.5dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnUploadImage"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:text="📁 Custom Image"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                app:backgroundTint="@color/background_surface"
+                app:cornerRadius="14dp"
+                app:strokeColor="@color/primary"
+                app:strokeWidth="1.5dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSelectEmoji"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:text="😊 Pick Emoji"
+                android:textColor="@color/text_primary"
+                android:textSize="12sp"
+                app:backgroundTint="@color/background_surface"
+                app:cornerRadius="14dp"
+                app:strokeColor="@color/accent"
+                app:strokeWidth="1.5dp" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+</ScrollView>
